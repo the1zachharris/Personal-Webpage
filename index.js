@@ -1,21 +1,21 @@
-import ejs from 'ejs';
-import ejsMate from 'ejs-mate';
-import express from 'express';
+const ejsMate = require('ejs-mate')
+const express = require('express')
+const path = require('path')
 
 const app = express()
 
-app.engine('ejs', engine);
+app.use(express.static(path.join(__dirname, "public")));
 
-app.set('views', __dirname + '/views');
-app.set('view engine', 'ejs'); // so you can render('index')
+app.engine("ejs", ejsMate);
+app.set("view engine", "ejs");
+app.set("views", path.join(__dirname, "views"));
 
-// render 'index' into 'boilerplate':
-app.get('/',function(req,res,next){
-  res.render('index');
+app.get("/", (req, res) => {
+  res.render("index");
 });
 
-
-
-
+app.listen(3000, () => {
+  console.log("Serving on port 3000!");
+});
 
 
