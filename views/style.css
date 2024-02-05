@@ -1,4 +1,6 @@
-
-#bio-des {
-    width: 50%;
+body {
+    background: #000;
+}
+canvas {
+    display: block;
 }
